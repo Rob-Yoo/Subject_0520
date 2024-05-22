@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias EmotionDiaryAsset = (image: UIImage, description: String)
+
 class EmotionDiaryViewController: UIViewController {
 
     @IBOutlet private var backgroundImageView: UIImageView!
@@ -14,16 +16,18 @@ class EmotionDiaryViewController: UIViewController {
     @IBOutlet private var emotionButtons: [UIButton]!
     @IBOutlet private var countLabels: [UILabel]!
     
-    private var emotionDataArray: [EmotionDiaryModel] = [
-        EmotionDiaryModel(image: .slime1, description: "행복해"),
-        EmotionDiaryModel(image: .slime2, description: "좋아해"),
-        EmotionDiaryModel(image: .slime3, description: "사랑해"),
-        EmotionDiaryModel(image: .slime4, description: "분노해"),
-        EmotionDiaryModel(image: .slime5, description: "퍙범해"),
-        EmotionDiaryModel(image: .slime6, description: "피곤해"),
-        EmotionDiaryModel(image: .slime7, description: "당황해"),
-        EmotionDiaryModel(image: .slime8, description: "우울해"),
-        EmotionDiaryModel(image: .slime9, description: "슬퍼해"),
+    static var selectedCountArray: [Int] = Array(repeating: 0, count: 9) // AppDelegate의 didFinishingLaunchingWithOptions 메서드에서 UserDefaults에 저장된 값으로 설정됨
+    
+    private var emotionAssetArray: [EmotionDiaryAsset] = [
+        (image: .slime1, description: "행복해"),
+        (image: .slime2, description: "좋아해"),
+        (image: .slime3, description: "사랑해"),
+        (image: .slime4, description: "분노해"),
+        (image: .slime5, description: "퍙범해"),
+        (image: .slime6, description: "피곤해"),
+        (image: .slime7, description: "당황해"),
+        (image: .slime8, description: "우울해"),
+        (image: .slime9, description: "슬퍼해")
     ]
     
     override func viewDidLoad() {
@@ -35,15 +39,18 @@ class EmotionDiaryViewController: UIViewController {
     
     @IBAction private func emotionButtonTapped(_ sender: UIButton) {
         let countLabel = self.countLabels[sender.tag]
-
-        self.emotionDataArray[sender.tag].updateCount()
-        self.setUpCountLabel(label: countLabel, count: self.emotionDataArray[sender.tag].count, description: self.emotionDataArray[sender.tag].description)
+        let description = self.emotionAssetArray[sender.tag].description
+        let count = EmotionDiaryViewController.selectedCountArray[sender.tag]
+        
+        self.setUpCountLabel(label: countLabel, count: count + 1, description: description)
+        EmotionDiaryViewController.selectedCountArray[sender.tag] = count + 1
     }
     
-    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
-        (0..<self.emotionDataArray.count).forEach {
-            self.emotionDataArray[$0].resetCount()
-            self.setUpCountLabel(label: self.countLabels[$0], count: self.emotionDataArray[$0].count, description:  self.emotionDataArray[$0].description)
+    @IBAction private func refreshButtonTapped(_ sender: UIBarButtonItem) {
+        EmotionDiaryViewController.selectedCountArray = Array(repeating: 0, count: 9)
+
+        (0..<self.emotionAssetArray.count).forEach {
+            self.setUpCountLabel(label: self.countLabels[$0], count: 0, description: self.emotionAssetArray[$0].description)
         }
     }
     
@@ -60,7 +67,8 @@ extension EmotionDiaryViewController {
         (0..<self.emotionButtons.count).forEach {
             let btn = self.emotionButtons[$0]
             let label = self.countLabels[$0]
-            let (count, image, description) = self.emotionDataArray[$0].provideEmotionData()
+            let (image, description) = self.emotionAssetArray[$0]
+            let count = EmotionDiaryViewController.selectedCountArray[$0]
             
             self.setUpEmotionButton(button: btn, image: image)
             self.setUpCountLabel(label: label, count: count, description: description)

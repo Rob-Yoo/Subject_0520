@@ -10,11 +10,18 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let loadedData = UserDefaults.standard.array(forKey: UserDefaultsKey.SelectedCountArray) as? [Int] {
+            EmotionDiaryViewController.selectedCountArray = loadedData
+        }
+
         return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        let savingData = EmotionDiaryViewController.selectedCountArray
+        UserDefaults.standard.set(savingData, forKey: UserDefaultsKey.SelectedCountArray)
     }
 
     // MARK: UISceneSession Lifecycle

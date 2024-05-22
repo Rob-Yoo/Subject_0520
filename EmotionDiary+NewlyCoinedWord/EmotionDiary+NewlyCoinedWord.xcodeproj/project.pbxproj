@@ -15,7 +15,7 @@
 		CC5FF2342BFB917700F68F89 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CC5FF2332BFB917700F68F89 /* Base */; };
 		CC5FF23E2BFB921100F68F89 /* NewlyCoinedWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FF23D2BFB921100F68F89 /* NewlyCoinedWordViewController.swift */; };
 		CC5FF2402BFB924D00F68F89 /* EmotionDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FF23F2BFB924D00F68F89 /* EmotionDiaryViewController.swift */; };
-		CC5FF2422BFB926300F68F89 /* EmotionDiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FF2412BFB926300F68F89 /* EmotionDiaryModel.swift */; };
+		CC80256E2BFDFE3900F4317E /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80256D2BFDFE3900F4317E /* UserDefaultsKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		CC5FF2352BFB917700F68F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5FF23D2BFB921100F68F89 /* NewlyCoinedWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewlyCoinedWordViewController.swift; sourceTree = "<group>"; };
 		CC5FF23F2BFB924D00F68F89 /* EmotionDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionDiaryViewController.swift; sourceTree = "<group>"; };
-		CC5FF2412BFB926300F68F89 /* EmotionDiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionDiaryModel.swift; sourceTree = "<group>"; };
+		CC80256D2BFDFE3900F4317E /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5FF23F2BFB924D00F68F89 /* EmotionDiaryViewController.swift */,
-				CC5FF2412BFB926300F68F89 /* EmotionDiaryModel.swift */,
+				CC80256D2BFDFE3900F4317E /* UserDefaultsKey.swift */,
 			);
 			path = EmotionDiary;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 				CC5FF22C2BFB917600F68F89 /* ViewController.swift in Sources */,
 				CC5FF2282BFB917600F68F89 /* AppDelegate.swift in Sources */,
 				CC5FF23E2BFB921100F68F89 /* NewlyCoinedWordViewController.swift in Sources */,
-				CC5FF2422BFB926300F68F89 /* EmotionDiaryModel.swift in Sources */,
+				CC80256E2BFDFE3900F4317E /* UserDefaultsKey.swift in Sources */,
 				CC5FF22A2BFB917600F68F89 /* SceneDelegate.swift in Sources */,
 				CC5FF2402BFB924D00F68F89 /* EmotionDiaryViewController.swift in Sources */,
 			);
