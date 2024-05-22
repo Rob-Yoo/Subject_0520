@@ -18,11 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        let savingData = EmotionDiaryViewController.selectedCountArray
-        UserDefaults.standard.set(savingData, forKey: UserDefaultsKey.SelectedCountArray)
-    }
 
     // MARK: UISceneSession Lifecycle
 
